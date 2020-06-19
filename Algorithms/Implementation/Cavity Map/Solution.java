@@ -9,6 +9,7 @@ public class Solution {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
+        in.nextLine();
         char[][] depths = new char[n][n];
 
         for (int i = 0; i < n; ++i) {
