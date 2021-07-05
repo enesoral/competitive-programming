@@ -21,27 +21,38 @@ public class Solution {
     static class Solver {
         public void solve(InputReader in, PrintWriter out) {
             int n = in.nextInt();
-            int[] arr = new int[n];
+            char[] arr = new char[n];
             for (int i = 0; i < n; i++) {
-                arr[i] = in.nextInt();
+                arr[i] = (char)in.nextInt();
             }
 
-            reverse(arr);
+            reverse(arr, 0, n);
+            reverseWords(arr);
 
             out.println(Arrays.toString(arr));
         }
 
-        public static void reverse(int[] arrayOfChars) {
-            int i = 0;
-            int j = arrayOfChars.length - 1;
+        public static void reverse(char[] arr, int startInd, int endInd) {
+            int i = startInd;
+            int j = endInd - 1;
 
             while (i < j) {
-                int temp = arrayOfChars[i];
-                arrayOfChars[i] = arrayOfChars[j];
-                arrayOfChars[j] = temp;
+                char temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
 
                 i++;
                 j--;
+            }
+        }
+
+        public static void reverseWords(char[] arr) {
+            int startInd = 0;
+            for (int i = 0; i <= arr.length; i++) {
+                if (i == arr.length || arr[i] == ' ') {
+                    reverse(arr, startInd, i);
+                    startInd = i + 1;
+                }
             }
         }
     }
